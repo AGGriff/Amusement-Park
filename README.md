@@ -253,3 +253,35 @@ elseif redstone.getAnalogInput("back") == 0 then  --When there is no longer a re
 end
  
 end
+
+
+if redstone.getAnalogInput("back") > 0 then
+turtle.place()
+
+elseif redstone.getAnalogInput("back") == 0 then
+turtle.dig()
+end
+
+while true do
+
+if redstone.getAnalogInput("back") > 0 then --Place redstone torch if redstone signal is active to open door
+turtle.place()
+sleep(2)
+
+else turtle.dig() --Break redstone torch if no redstone signal
+
+end
+end
+
+while true do
+
+if redstone.getAnalogInput("back") > 0 then -- When the tripwire is activated the turtle will place a redstone torch to create a redstone loop
+turtle.place()
+
+elseif redstone.getAnalogInput("back") == 0 then -- As long as there is no redstone signal the turtle removes the torch stopping the loop
+sleep(1)
+turtle.dig()
+
+end
+
+end
